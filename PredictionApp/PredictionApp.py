@@ -1,5 +1,5 @@
 # repo changes after being cloned
-import streamlit as st
+import streamlit as st # type: ignore
 import pickle
 
 # ['Fuel Consumption Comb (L/100 km)', 
