@@ -11,9 +11,11 @@ import pickle
 # 'Model',
 # 'Fuel Consumption City (L/100 km)',
 # 'Is_Transmission_M']
+ipath = 'PredictionApp/model.pkl'
+
 path = 'C:/Users/javen/OneDrive/Desktop/Code/C02Emissions - E2E'
 
-with open(path + '/model.pkl', 'rb') as file:
+with open(ipath, 'rb') as file:
     model = pickle.load(file)
 
 
