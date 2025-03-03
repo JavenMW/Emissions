@@ -1,4 +1,4 @@
-# repo changes after being cloned asdfasdfasdfasdfasdasdf
+# repo changes after being cloned
 import streamlit as st
 import pickle
 
@@ -11,9 +11,10 @@ import pickle
 # 'Model',
 # 'Fuel Consumption City (L/100 km)',
 # 'Is_Transmission_M']
-ipath = 'PredictionApp/model.pkl'
+macpath = 'PredictionApp/model.pkl'
 
-path = 'C:/Users/javen/OneDrive/Desktop/Code/C02Emissions - E2E'
+winpath = 'C:/Users/javen/OneDrive/Desktop/Code/Git Repositories/Emissions/PredictionApp/model.pkl'
+
 
 with open(ipath, 'rb') as file:
     model = pickle.load(file)
