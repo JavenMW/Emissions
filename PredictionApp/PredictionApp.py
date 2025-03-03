@@ -16,7 +16,7 @@ macpath = 'PredictionApp/model.pkl'
 winpath = 'C:/Users/javen/OneDrive/Desktop/Code/Git Repositories/Emissions/PredictionApp/model.pkl'
 
 
-with open(ipath, 'rb') as file:
+with open(winpath, 'rb') as file:
     model = pickle.load(file)
 
 
