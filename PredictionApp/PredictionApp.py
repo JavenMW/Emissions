@@ -107,4 +107,6 @@ new_data['Model'] = new_data['Model'].astype('category')
 
 if st.button('Predict'):
     prediction = model.predict(new_data)
-    st
+    st.write(f'Your car emits {prediction} (g/km) in emissions.')
+
+ 
