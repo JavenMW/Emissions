@@ -5,8 +5,8 @@ import pickle
 import numpy as np # type: ignore
 import pandas as pd # type: ignore
 import joblib # type: ignore
-import torch # type: ignore
-import xgboost
+# import torch # type: ignore
+# import xgboost
 
 
 # ['Fuel Consumption Comb (L/100 km)', 
@@ -49,7 +49,7 @@ st.title('Vehicle Info')
 st.write("----------------------------------------------------------------------------")
 make = st.text_input('Please enter your vehicle make: ')
 vehicle_class = st.text_input('Please enter your vehicle class: ')
-model = st.text_input('Please enter your vehicle model: ')
+vehicle_model = st.text_input('Please enter your vehicle model: ')
 st.write("----------------------------------------------------------------------------")
 st.title('MPG')
 st.write("----------------------------------------------------------------------------")
@@ -91,7 +91,7 @@ new_data = pd.DataFrame({
     'Transmission': [transmissison],
     'Make': [make],
     'Vehicle Class': [vehicle_class],
-    'Model': [model],
+    'Model': [vehicle_model],
     'Fuel Consumption City (L/100 km)': [fuel_cons_cty],
     'Is_Transmission_M': [Is_Transmission_M]
 })
@@ -102,7 +102,6 @@ new_data['Transmission'] = new_data['Transmission'].astype('category')
 new_data['Make'] = new_data['Make'].astype('category')
 new_data['Vehicle Class'] = new_data['Vehicle Class'].astype('category')
 new_data['Model'] = new_data['Model'].astype('category')
-
 
 
 if st.button('Predict'):
