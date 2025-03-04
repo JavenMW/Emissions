@@ -6,6 +6,7 @@ import numpy as np # type: ignore
 import pandas as pd # type: ignore
 import joblib # type: ignore
 import torch # type: ignore
+import xgboost
 
 
 # ['Fuel Consumption Comb (L/100 km)', 
@@ -30,10 +31,10 @@ import torch # type: ignore
 # gears = 5.0
 # transmissison = 'CVT'
 
-macpath = 'PredictionApp/model.pkl'
+macpath = '/Users/Javen/Desktop/Git Repositories/Emissions/PredictionApp/model.pkl'
 winpath = 'C:/Users/javen/OneDrive/Desktop/Code/Git Repositories/Emissions/PredictionApp/model.pkl'
 # Opens prepackaged model
-with open(winpath, 'rb') as f:
+with open(macpath, 'rb') as f:
     model = pickle.load(f)
 
 
