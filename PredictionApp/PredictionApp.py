@@ -6,7 +6,7 @@ import numpy as np # type: ignore
 import pandas as pd # type: ignore
 import joblib # type: ignore
 # import torch # type: ignore
-# import xgboost
+import xgboost as xgb
 
 
 # ['Fuel Consumption Comb (L/100 km)', 
@@ -34,13 +34,13 @@ import joblib # type: ignore
 macpath = '/Users/Javen/Desktop/Git Repositories/Emissions/PredictionApp/model.pkl'
 winpath = 'C:/Users/javen/OneDrive/Desktop/Code/Git Repositories/Emissions/PredictionApp/model.pkl'
 # Opens prepackaged model
-with open(macpath, 'rb') as f:
+with open(winpath, 'rb') as f:
     model = pickle.load(f)
 
 
 
 def mpg_to_lkm(mpg=1):
-    lkm = 2.352 / mpg
+    lkm = 235.2 / mpg
     return lkm
 
 
@@ -72,7 +72,7 @@ fuel_type = st.text_input('Please enter your fuel type: ')
 st.write("----------------------------------------------------------------------------")
 st.title('Transmission')
 st.write("----------------------------------------------------------------------------")
-gears = st.text_input('Please enter your gear count: ')
+gears = st.number_input('Please enter your gear count: ')
 transmissison = st.text_input('Please enter your transmission: ')
 st.write("----------------------------------------------------------------------------")
 
@@ -102,10 +102,18 @@ new_data['Transmission'] = new_data['Transmission'].astype('category')
 new_data['Make'] = new_data['Make'].astype('category')
 new_data['Vehicle Class'] = new_data['Vehicle Class'].astype('category')
 new_data['Model'] = new_data['Model'].astype('category')
+new_data['Gears'] = new_data['Gears'].astype('float')
 
 
+dmatrix = xgb.DMatrix(new_data, enable_categorical = True)
 if st.button('Predict'):
     prediction = model.predict(new_data)
     st.write(f'Your car emits {prediction} (g/km) in emissions.')
 
  
+
+#  ['COMPACT' 'SUV - SMALL' 'MID-SIZE' 'TWO-SEATER' 'MINICOMPACT'
+#  'SUBCOMPACT' 'FULL-SIZE' 'STATION WAGON - SMALL' 'SUV - STANDARD'
+#  'VAN - CARGO' 'VAN - PASSENGER' 'PICKUP TRUCK - STANDARD' 'MINIVAN'
+#  'SPECIAL PURPOSE VEHICLE' 'STATION WAGON - MID-SIZE'
+#  'PICKUP TRUCK - SMALL']
