@@ -2,10 +2,10 @@
 
 import streamlit as st # type: ignore
 import pickle
-import numpy as np
-import pandas as pd
-import joblib
-import torch
+import numpy as np # type: ignore
+import pandas as pd # type: ignore
+import joblib # type: ignore
+import torch # type: ignore
 
 
 # ['Fuel Consumption Comb (L/100 km)', 
