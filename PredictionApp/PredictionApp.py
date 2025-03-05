@@ -18,7 +18,7 @@ with open(winpath, 'rb') as f:
 
 def mpg_to_lkm(mpg=1):
     """
-    Used to convert mpg to l/100km
+    Used to convert 1 mpg to l/100km
     """
     lkm = 235.2 / mpg
     return lkm
