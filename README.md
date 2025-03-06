@@ -18,17 +18,13 @@ Since our client is wanting to know what will happen based on vehicle traits, pr
 
 ### Predicitive Analysis
 - Since our dependent variable is numerical, we are going to use different types of regression models.
-    1. Multinomial Logit Regression - for simplicity
-    2. Decision Trees Regressor - for readability
-    3. Random Forests Regressor - for high-dimensionality
-    4. Gradince Boosted Machines (GBM) - high performance
-    5. Nearal Networks - if we find ourselves with alot of data.
+    1. XGBoost - specifically xgbregressor for its performance.
 
 ## Data Requirements
 Identify any confounding errors and the necessary and relevant features
 
-Confounding errors: Commercial, luxury, cargo vehicles
-- vehicles such as busses, dump trucks, high end sports and luxury cars, and 18 wheelers will likely have higher emissions
+Confounding errors: Commercial, cargo vehicles
+- vehicles such as busses, dump trucks, and 18 wheelers will likely have higher emissions
 
 Relevant features seen within our dataset
 - Engine size - typically the bigger the engine the more gas uses, leading to more emissions.
@@ -53,7 +49,6 @@ Understand relationships, visualize outliers, identify bad data, and form your s
 Types of Exploratory Data Analysis:
 - Note relations between C02 emissions and other variables (and any correlations between independent variables)
 - Identify unique values within make, model, vehicle class, and transmission
-- Visualize outliers with box and whisker plots
 - Identify skewness with histograms
 - Make assumptions about my data to formulate a story
 
@@ -64,7 +59,6 @@ Clean data in accordance with the indentified bad data. Select and engineer feat
 
 Clean the data
 - Determine standard for filling in missing values
-- Remove skewness through winsorization or trimmed mean methods
 - Any punctuation errors seen in strings
 
 Preprocess the data:
@@ -73,29 +67,19 @@ Preprocess the data:
     - Same thing with Cylinders and fuel consumption
 
 - Feature Selection
-    - Utilize stepwise correlation to identify useful variables
-    - Forward selection
-    - Correlation Matrix to identify highly correlated features
-
-- One hot encoding for our categorical variables
-- Feature scaling / MinMax Scaling for model readability
+    - Sequential feature selection
 
 
 ## Modeling
 Begin modeling data in accordance with the methods outlined in the analytical approach. Does our model meet our business requirements?
 
 Looking at our data we decided to start with 3 of the 5 mentioned models.
-1. Multinomial Logit Regression - for simplicity. If you can have a model that is efficient, low cost, and delivers good accuracy then we will use it. As this will gives us the most efficient way of predicting results.
-
-2. Random Forest Regressor - for high dimensionality. Our "Model" variable contains many unique values and could overfit the model, but it would still be nice to have this data represented within our dataset. All of this while still being able to note feature importance with the use of SHAP LIME or .feature_importances_ from sci-kit learn.
-
-3. KNN Regression - for finding unseen relationships. Lets see if our model can find any groupings of data based off of their characteristics. Assigning a label to records seen with like characteristics.
+1. XGBoost - for its performance. It provides us with high performance, while maintaining some readability.
 
 ## Evaluation
 This is how we plan to test our models effectiveness at answering the inital question when new data is introduced.
 
 Regression Evaluation Metrics:
-- OLS Regression Results - over interprability of model variables. 
 - RMSE - tells us the the distance between our predictions and actual results. The lower the better.
 - R2 - this will tell us how much of our dependent variable can be explained by our independent variables
 
@@ -104,11 +88,10 @@ Regression Evaluation Metrics:
 This is where we hand our model to key business stakeholders to test the performance of our product.
 
 The goal here is to create a simple py script that hooks up to our model through an api, allowing the API to be accessed through the py script.
-- Create .ipynb notebook to explore our data
-- Create .ipynb input new data from client and to output clean data for our model
+- Create .ipynb notebook to explore our data and create our model
 - Create .py script to feed data into model which outputs results
-- Create .py script to read results data and output insights
-- Tie it last four steps together in one script for ease of use.
+- Put files into a docker container
+- Utilize streamlit to guide user interaction with the model.
 
 ## Feedback
 Receive feed back from your client to determine if the model needs to be adjusted. IE too many confounding errors.

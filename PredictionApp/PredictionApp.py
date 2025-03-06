@@ -1,21 +1,18 @@
-# under construction
-
-import streamlit as st # type: ignore
 import pickle
-import numpy as np # type: ignore
-import pandas as pd # type: ignore
-import joblib # type: ignore
-# import torch # type: ignore
+import pandas as pd
 import xgboost as xgb
+import streamlit as st
 
-
-macpath = '/Users/Javen/Desktop/Git Repositories/Emissions/PredictionApp/model.pkl'
+# LOAD VARIABLES WITH PATH TO "model.pkl" DEPENDING ON YOUR OS
+macpath = '/Users/Your_Path/PredictionApp/model.pkl'
 winpath = 'C:/Users/javen/OneDrive/Desktop/Code/Git Repositories/Emissions/PredictionApp/model.pkl'
-# Opens prepackaged model
+linpath = 'Path/To/model.pkl'
+
+# Opens prepackaged model | change path to respective OS. 
 with open(winpath, 'rb') as f:
     model = pickle.load(f)
 
-
+# Converts mpg to l/100km
 def mpg_to_lkm(mpg=1):
     """
     Used to convert 1 mpg to l/100km
@@ -23,7 +20,7 @@ def mpg_to_lkm(mpg=1):
     lkm = 235.2 / mpg
     return lkm
 
-
+# Predicts your cars emissions rating
 def __main__():
     """
     Main program. Utilizes streamlit to start a local web instance for model interaction.
@@ -74,11 +71,13 @@ def __main__():
                             M = Manual')
     st.write("----------------------------------------------------------------------------")
 
+    # Preprocessing for variable Is_Transmission_M
     if transmissison == 'M':
         Is_Transmission_M = 1
     else:
         Is_Transmission_M = 0
 
+    # Creates data frame for user inputted data
     new_data = pd.DataFrame({
         'Fuel Consumption Comb (L/100 km)': [fuel_cons_comb],
         'Fuel Type': [fuel_type],
@@ -100,13 +99,19 @@ def __main__():
     new_data['Model'] = new_data['Model'].astype('category')
     new_data['Gears'] = new_data['Gears'].astype('float')
 
-
     dmatrix = xgb.DMatrix(new_data, enable_categorical = True)
     if st.button('Predict'):
         prediction = model.predict(new_data)
         st.write(f'Your car emits {prediction} (g/km) in emissions.')
 
- 
+        
+        # Ranks emissions rating
+        if prediction < 191:
+            st.write('Your vehicle emissions rating is: LOW')
+        elif (prediction >= 191) & (prediction < 326):
+            st.write('Your vehicle emissions rating is: MEDIUM')
+        elif (prediction >= 326):
+            st.write('Your vehicle emissions rating is: HIGH')
+
 if __name__ == "__main__":
     __main__()
-
