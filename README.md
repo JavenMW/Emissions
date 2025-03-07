@@ -1,7 +1,7 @@
-under construction
+
 # Project Outline
 
-This project will be outlined using the Data Science methodology that was coined by IBM's John Rollins. This process is meant to be highly interative.
+This project will be outlined using IBM's John Rollins's data science methodology.
 
 ## Business Understanding
 For this project's problem statement, ChatGPT will be used to generate a problem statement based off of the dataset.
