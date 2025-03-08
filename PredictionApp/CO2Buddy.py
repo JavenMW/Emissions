@@ -70,7 +70,7 @@ def __main__():
                          D \
                          E \
                          N ']
-    fuel_type = st.checkbox('Please enter your fuel type: \
+    fuel_type = st.multiselect('Please enter your fuel type: \
                                 X = Regular gasoline \
                                 Z = Premium gasoline \
                                 D = Diesel \
@@ -87,7 +87,7 @@ def __main__():
                             'AS' \
                             'AV' \
                             'M' ]
-    transmissison = st.checkbox('Please enter your transmission: \
+    transmissison = st.multiselect('Please enter your transmission: \
                             A = Automatic \
                             AM = Automated manual \
                             AS = Automatic with select shift \
