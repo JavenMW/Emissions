@@ -2,7 +2,6 @@ import pickle
 import pandas as pd
 import xgboost as xgb
 import streamlit as st
-from tkinter import filedialog
 
 # Opens prepackaged model
 @st.cache_resource # Stores the model
