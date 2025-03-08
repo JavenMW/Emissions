@@ -3,6 +3,8 @@ import pandas as pd
 import xgboost as xgb
 import streamlit as st
 import warnings
+
+warnings.filterwarnings("ignore", category=UserWarning, message=".*Your script uses a widget command in a cached function.*")
 # Opens prepackaged model
 @st.cache_resource # Stores the model
 
