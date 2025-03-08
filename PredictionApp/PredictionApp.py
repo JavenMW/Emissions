@@ -2,15 +2,26 @@ import pickle
 import pandas as pd
 import xgboost as xgb
 import streamlit as st
+from tkinter import filedialog
 
-# LOAD VARIABLES WITH PATH TO "model.pkl" DEPENDING ON YOUR OS
-macpath = '/Users/Your_Path/PredictionApp/model.pkl'
-winpath = 'C:/Users/javen/OneDrive/Desktop/Code/Git Repositories/Emissions/PredictionApp/model.pkl'
-linpath = 'Path/To/model.pkl'
+# Opens prepackaged model
+@st.cache_resource # Stores the model
+def load_model():
+    """
+    Used to prompt the user to load model from their system.
+    """
+    
+    path = (f'{filedialog.askopenfilename()}')
+    if path:
+        st.write('Model loaded successfully.')
+    else:
+        st.write('Model could not be loaded.')
+        st.stop()
 
-# Opens prepackaged model | change path to respective OS. 
-with open(winpath, 'rb') as f:
-    model = pickle.load(f)
+    with open(path, 'rb') as f:
+        model = pickle.load(f)
+
+    return model
 
 # Converts mpg to l/100km
 def mpg_to_lkm(mpg=1):
@@ -20,11 +31,17 @@ def mpg_to_lkm(mpg=1):
     lkm = 235.2 / mpg
     return lkm
 
+
 # Predicts your cars emissions rating
 def __main__():
     """
     Main program. Utilizes streamlit to start a local web instance for model interaction.
     """
+    model = load_model()
+    if model is None:
+        st.stop()
+        st.write('Model failed to load')
+    
     # Prompts to store user information for the model
     st.title('Vehicle Info')
     st.write("----------------------------------------------------------------------------")
@@ -39,17 +56,17 @@ def __main__():
     st.title('MPG')
     st.write("----------------------------------------------------------------------------")
 
+    # Prompts user for fuel consumption
     mpgfuel_cons_cty = st.number_input('Please enter your city fuel consumption: ', value=1)
     mpgfuel_cons_hwy = st.number_input('Please enter your highway fuel consumption: ', value=1)
     mpgfuel_cons_comb = st.number_input('Please enter your combined fuel consumption: ', value=1)
+    
     # Convert the inputs to float if they are not empty
-
     fuel_cons_cty = mpg_to_lkm(float(mpgfuel_cons_cty))
-
     fuel_cons_hwy = mpg_to_lkm(float(mpgfuel_cons_hwy))
-
     fuel_cons_comb = mpg_to_lkm(float(mpgfuel_cons_comb))
 
+    # More prompts for vehicle information
     st.write("----------------------------------------------------------------------------")
     st.title('Fuel Type')
     st.write("----------------------------------------------------------------------------")
@@ -99,12 +116,11 @@ def __main__():
     new_data['Model'] = new_data['Model'].astype('category')
     new_data['Gears'] = new_data['Gears'].astype('float')
 
-    dmatrix = xgb.DMatrix(new_data, enable_categorical = True)
+    # Plugs in new user data to our model and outputs the results.
     if st.button('Predict'):
         prediction = model.predict(new_data)
         st.write(f'Your car emits {prediction} (g/km) in emissions.')
 
-        
         # Ranks emissions rating
         if prediction < 191:
             st.write('Your vehicle emissions rating is: LOW')
@@ -112,6 +128,8 @@ def __main__():
             st.write('Your vehicle emissions rating is: MEDIUM')
         elif (prediction >= 326):
             st.write('Your vehicle emissions rating is: HIGH')
+
+    return
 
 if __name__ == "__main__":
     __main__()
