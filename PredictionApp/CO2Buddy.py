@@ -10,10 +10,10 @@ import os
 # # @st.cache_resource # Stores the model
 # model = st.file_uploader("Choose a file", type="pkl")
 
-# cwd = os.getcwd()
+ls = os.listdir()
 
 # Display the current working directory in the Streamlit app
-# st.write(f'Current working directory: {cwd}')
+st.write(f'Current working directory: {ls}')
 
 def load_model():
     """
@@ -21,7 +21,7 @@ def load_model():
     """
     # model = st.file_uploader('Load the')
     # path = (f'{filedialog.askopenfilename(filetypes=[('Pickle files', '*.pkl')])}')
-    path = '/mount/src/emissions/model.pkl'
+    path = '/mount/src/emissions/predictionapp/model.pkl'
     
     try:
         with open(path, 'rb') as f:
