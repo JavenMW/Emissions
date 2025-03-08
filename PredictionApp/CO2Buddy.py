@@ -10,8 +10,7 @@ def load_model():
     """
     Used to prompt the user to load model from their system.
     """
-    
-    path = (f'{filedialog.askopenfilename()}')
+    path = (f'{filedialog.askopenfilename(filetypes=[('Pickle files', '*.pkl')])}')
     if path:
         st.write('Model loaded successfully.')
     else:
@@ -30,7 +29,6 @@ def mpg_to_lkm(mpg=1):
     """
     lkm = 235.2 / mpg
     return lkm
-
 
 # Predicts your cars emissions rating
 def __main__():
@@ -122,11 +120,11 @@ def __main__():
         st.write(f'Your car emits {prediction} (g/km) in emissions.')
 
         # Ranks emissions rating
-        if prediction < 191:
+        if prediction < 150:
             st.write('Your vehicle emissions rating is: LOW')
-        elif (prediction >= 191) & (prediction < 326):
+        elif (prediction >= 150) & (prediction < 255):
             st.write('Your vehicle emissions rating is: MEDIUM')
-        elif (prediction >= 326):
+        elif (prediction >= 256):
             st.write('Your vehicle emissions rating is: HIGH')
 
     return
