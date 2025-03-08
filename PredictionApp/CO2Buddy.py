@@ -44,7 +44,7 @@ def __main__():
     st.title('Vehicle Info')
     st.write("----------------------------------------------------------------------------")
     make = st.text_input('Please enter your vehicle make: ')
-    vehicle_class = st.multiselect("Please enter your vehicle class: ", vhclass_options)
+    vehicle_class = st.checkbox("Please enter your vehicle class: ", vhclass_options)
     # vehicle_class = st.selectbox ('Choose an option: ', vhclass_options)
     vehicle_model = st.text_input('Please enter your vehicle model: ')
     st.write("----------------------------------------------------------------------------")
