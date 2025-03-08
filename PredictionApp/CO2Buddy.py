@@ -2,7 +2,7 @@ import pickle
 import pandas as pd
 import xgboost as xgb
 import streamlit as st
-
+import warnings
 # Opens prepackaged model
 @st.cache_resource # Stores the model
 
