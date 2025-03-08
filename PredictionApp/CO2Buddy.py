@@ -5,6 +5,7 @@ import streamlit as st
 
 # Opens prepackaged model
 @st.cache_resource # Stores the model
+
 def load_model():
     """
     Used to prompt the user to load model from their system.
