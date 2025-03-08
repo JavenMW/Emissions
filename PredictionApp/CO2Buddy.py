@@ -44,7 +44,7 @@ def __main__():
     st.title('Vehicle Info')
     st.write("----------------------------------------------------------------------------")
     make = st.text_input('Please enter your vehicle make: ')
-    vehicle_class = st.multiselect("Please enter your vehicle class: ", vhclass_options)
+    vehicle_class = st.text_input("Please enter your vehicle class: ", vhclass_options)
     # vehicle_class = st.selectbox ('Choose an option: ', vhclass_options)
     vehicle_model = st.text_input('Please enter your vehicle model: ')
     st.write("----------------------------------------------------------------------------")
@@ -70,7 +70,7 @@ def __main__():
                          'D', \
                          'E', \
                          'N']
-    fuel_type = st.multiselect('Please enter your fuel type: \
+    fuel_type = st.text_input('Please enter your fuel type: \
                                 X = Regular gasoline \
                                 Z = Premium gasoline \
                                 D = Diesel \
@@ -86,8 +86,13 @@ def __main__():
                             'AM', \
                             'AS', \
                             'AV', \
-                            'M', ]
-    transmissison = st.checkbox(transmission_options)
+                            'M' ]
+    transmissison = st.text_input('Please enter your transmission: \
+                            A = Automatic \
+                            AM = Automated manual \
+                            AS = Automatic with select shift \
+                            AV = Continuously variable \
+                            M = Manual')
     st.write("----------------------------------------------------------------------------")
 
     # Preprocessing for variable Is_Transmission_M
