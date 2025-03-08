@@ -2,25 +2,11 @@ import pickle
 import pandas as pd
 import xgboost as xgb
 import streamlit as st
-import warnings
-import os
-
-# warnings.filterwarnings("ignore", category=UserWarning, message=".*Your script uses a widget command in a cached function.*")
-# # Opens prepackaged model
-# # @st.cache_resource # Stores the model
-# model = st.file_uploader("Choose a file", type="pkl")
-
-ls = os.listdir()
-
-# Display the current working directory in the Streamlit app
-st.write(f'Current working directory: {ls}')
 
 def load_model():
     """
     Used to prompt the user to load model from their system.
     """
-    # model = st.file_uploader('Load the')
-    # path = (f'{filedialog.askopenfilename(filetypes=[('Pickle files', '*.pkl')])}')
     path = '/mount/src/emissions/PredictionApp/model.pkl'
     
     try:
@@ -28,9 +14,6 @@ def load_model():
             model = pickle.load(f)
     except FileNotFoundError:
         st.error(f"File not found: {path}. Please check the file path.")
-    # model = st.file_uploader("Choose a file", type="pkl")
-
-    
 
     return model
 
