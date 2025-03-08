@@ -2,7 +2,7 @@ import pickle
 import pandas as pd
 import xgboost as xgb
 import streamlit as st
-import _tkinter
+import tkinter
 from tkinter import filedialog
 
 # Opens prepackaged model
