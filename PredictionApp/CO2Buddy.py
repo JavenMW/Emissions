@@ -48,7 +48,7 @@ def __main__():
                        'SUBCOMPACT', 'FULL-SIZE', 'STATION WAGON - SMALL', 'SUV - STANDARD', \
                        'VAN - CARGO', 'VAN - PASSENGER', 'PICKUP TRUCK - STANDARD', 'MINIVAN', \
                        'SPECIAL PURPOSE VEHICLE', 'STATION WAGON - MID-SIZE', \
-                       'PICKUP TRUCK - SMALL'", vhclass_options)
+                       'PICKUP TRUCK - SMALL'")
     # vehicle_class = st.selectbox ('Choose an option: ', vhclass_options)
     vehicle_model = st.text_input('Please enter your vehicle model: ')
     st.write("----------------------------------------------------------------------------")
@@ -78,8 +78,7 @@ def __main__():
                                 X = Regular gasoline \
                                 Z = Premium gasoline \
                                 D = Diesel \
-                                E = Ethanol (E85) \
-                                N = Natural gas', fueltype_options)
+                                E = Ethanol (E85)')
     
     # fuel_type = st.selectbox ('Choose an option: ', fueltype_options)
     st.write("----------------------------------------------------------------------------")
