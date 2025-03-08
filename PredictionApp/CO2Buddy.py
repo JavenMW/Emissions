@@ -11,7 +11,7 @@ def load_model():
     """
     # model = st.file_uploader('Load the')
     # path = (f'{filedialog.askopenfilename(filetypes=[('Pickle files', '*.pkl')])}')
-    path = 'Emissions\PredictionApp\model.pkl'
+    path = 'C:/Users/javen/OneDrive/Desktop/Code/Git Repositories/Emissions/PredictionApp/model.pkl'
     
     try:
         with open(path, 'rb') as f:
