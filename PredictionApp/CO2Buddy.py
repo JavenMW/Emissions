@@ -87,12 +87,7 @@ def __main__():
                             'AS', \
                             'AV', \
                             'M', ]
-    transmissison = st.multiselect('Please enter your transmission: \
-                            A = Automatic \
-                            AM = Automated manual \
-                            AS = Automatic with select shift \
-                            AV = Continuously variable \
-                            M = Manual', transmission_options)
+    transmissison = st.checkbox(transmission_options)
     st.write("----------------------------------------------------------------------------")
 
     # Preprocessing for variable Is_Transmission_M
