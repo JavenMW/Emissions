@@ -6,7 +6,8 @@ import warnings
 
 warnings.filterwarnings("ignore", category=UserWarning, message=".*Your script uses a widget command in a cached function.*")
 # Opens prepackaged model
-@st.cache_resource # Stores the model
+# @st.cache_resource # Stores the model
+model = st.file_uploader("Choose a file", type="pkl")
 
 def load_model():
     """
@@ -40,7 +41,7 @@ def __main__():
     """
     Main program. Utilizes streamlit to start a local web instance for model interaction.
     """
-    model = load_model()
+    # model = load_model()
     if model is None:
         st.stop()
         st.write('Model failed to load')
