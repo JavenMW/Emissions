@@ -13,7 +13,7 @@ import os
 # cwd = os.getcwd()
 
 # Display the current working directory in the Streamlit app
-st.write(f'Current working directory: {cwd}')
+# st.write(f'Current working directory: {cwd}')
 
 def load_model():
     """
