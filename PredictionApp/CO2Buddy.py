@@ -10,15 +10,15 @@ def load_model():
     """
     Used to prompt the user to load model from their system.
     """
-    path = (f'{filedialog.askopenfilename(filetypes=[('Pickle files', '*.pkl')])}')
-    if path:
-        st.write('Model loaded successfully.')
-    else:
-        st.write('Model could not be loaded.')
-        st.stop()
-
-    with open(path, 'rb') as f:
-        model = pickle.load(f)
+    # model = st.file_uploader('Load the')
+    # path = (f'{filedialog.askopenfilename(filetypes=[('Pickle files', '*.pkl')])}')
+    path = 'Emissions/PredictionApp/model.pkl'
+    
+    try:
+        with open(path, 'rb') as f:
+            model = pickle.load(f)
+    except FileNotFoundError:
+        st.error(f"File not found: {path}. Please check the file path.")
 
     return model
 
