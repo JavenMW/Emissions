@@ -44,7 +44,11 @@ def __main__():
     st.title('Vehicle Info')
     st.write("----------------------------------------------------------------------------")
     make = st.text_input('Please enter your vehicle make: ')
-    vehicle_class = st.text_input("Please enter your vehicle class: ", vhclass_options)
+    vehicle_class = st.text_input("Please enter your vehicle class: 'COMPACT', 'SUV,- SMALL', 'MID-SIZE', 'TWO-SEATER', 'MINICOMPACT', \
+                       'SUBCOMPACT', 'FULL-SIZE', 'STATION WAGON - SMALL', 'SUV - STANDARD', \
+                       'VAN - CARGO', 'VAN - PASSENGER', 'PICKUP TRUCK - STANDARD', 'MINIVAN', \
+                       'SPECIAL PURPOSE VEHICLE', 'STATION WAGON - MID-SIZE', \
+                       'PICKUP TRUCK - SMALL'", vhclass_options)
     # vehicle_class = st.selectbox ('Choose an option: ', vhclass_options)
     vehicle_model = st.text_input('Please enter your vehicle model: ')
     st.write("----------------------------------------------------------------------------")
