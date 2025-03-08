@@ -5,12 +5,12 @@ import streamlit as st
 import warnings
 import os
 
-warnings.filterwarnings("ignore", category=UserWarning, message=".*Your script uses a widget command in a cached function.*")
-# Opens prepackaged model
-# @st.cache_resource # Stores the model
-model = st.file_uploader("Choose a file", type="pkl")
+# warnings.filterwarnings("ignore", category=UserWarning, message=".*Your script uses a widget command in a cached function.*")
+# # Opens prepackaged model
+# # @st.cache_resource # Stores the model
+# model = st.file_uploader("Choose a file", type="pkl")
 
-cwd = os.getcwd()
+# cwd = os.getcwd()
 
 # Display the current working directory in the Streamlit app
 st.write(f'Current working directory: {cwd}')
@@ -21,14 +21,14 @@ def load_model():
     """
     # model = st.file_uploader('Load the')
     # path = (f'{filedialog.askopenfilename(filetypes=[('Pickle files', '*.pkl')])}')
-    # path = 'model.pkl'
+    path = '/mount/src/emissions/model.pkl'
     
-    # try:
-    #     with open(path, 'rb') as f:
-    #         model = pickle.load(f)
-    # except FileNotFoundError:
-    #     st.error(f"File not found: {path}. Please check the file path.")
-    model = st.file_uploader("Choose a file", type="pkl")
+    try:
+        with open(path, 'rb') as f:
+            model = pickle.load(f)
+    except FileNotFoundError:
+        st.error(f"File not found: {path}. Please check the file path.")
+    # model = st.file_uploader("Choose a file", type="pkl")
 
     
 
