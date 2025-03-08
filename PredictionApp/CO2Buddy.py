@@ -36,14 +36,20 @@ def __main__():
         st.write('Model failed to load')
     
     # Prompts to store user information for the model
+    vhclass_options = ['COMPACT', 'SUV,- SMALL', 'MID-SIZE', 'TWO-SEATER', 'MINICOMPACT', \
+                       'SUBCOMPACT', 'FULL-SIZE', 'STATION WAGON - SMALL', 'SUV - STANDARD', \
+                       'VAN - CARGO', 'VAN - PASSENGER', 'PICKUP TRUCK - STANDARD', 'MINIVAN', \
+                       'SPECIAL PURPOSE VEHICLE', 'STATION WAGON - MID-SIZE', \
+                       'PICKUP TRUCK - SMALL']
     st.title('Vehicle Info')
     st.write("----------------------------------------------------------------------------")
     make = st.text_input('Please enter your vehicle make: ')
-    vehicle_class = st.text_input("Please enter your vehicle class: 'COMPACT' 'SUV - SMALL' 'MID-SIZE' 'TWO-SEATER' 'MINICOMPACT' \
+    vehicle_class = st.checkbox("Please enter your vehicle class: 'COMPACT' 'SUV - SMALL' 'MID-SIZE' 'TWO-SEATER' 'MINICOMPACT' \
                                     'SUBCOMPACT' 'FULL-SIZE' 'STATION WAGON - SMALL' 'SUV - STANDARD' \
                                     'VAN - CARGO' 'VAN - PASSENGER' 'PICKUP TRUCK - STANDARD' 'MINIVAN' \
                                     'SPECIAL PURPOSE VEHICLE' 'STATION WAGON - MID-SIZE' \
-                                    'PICKUP TRUCK - SMALL'")
+                                    'PICKUP TRUCK - SMALL'", vhclass_options)
+    # vehicle_class = st.selectbox ('Choose an option: ', vhclass_options)
     vehicle_model = st.text_input('Please enter your vehicle model: ')
     st.write("----------------------------------------------------------------------------")
     st.title('MPG')
@@ -63,22 +69,34 @@ def __main__():
     st.write("----------------------------------------------------------------------------")
     st.title('Fuel Type')
     st.write("----------------------------------------------------------------------------")
-    fuel_type = st.text_input('Please enter your fuel type: \
+    fueltype_options = ['X \
+                         Z  \
+                         D \
+                         E \
+                         N ']
+    fuel_type = st.checkbox('Please enter your fuel type: \
                                 X = Regular gasoline \
                                 Z = Premium gasoline \
                                 D = Diesel \
                                 E = Ethanol (E85) \
-                                N = Natural gas ')
+                                N = Natural gas', fueltype_options)
+    
+    # fuel_type = st.selectbox ('Choose an option: ', fueltype_options)
     st.write("----------------------------------------------------------------------------")
     st.title('Transmission')
     st.write("----------------------------------------------------------------------------")
     gears = st.number_input('Please enter your gear count: ')
-    transmissison = st.text_input('Please enter your transmission: \
+    transmission_options = ['A' \
+                            'AM' \
+                            'AS' \
+                            'AV' \
+                            'M' ]
+    transmissison = st.checkbox('Please enter your transmission: \
                             A = Automatic \
                             AM = Automated manual \
                             AS = Automatic with select shift \
                             AV = Continuously variable \
-                            M = Manual')
+                            M = Manual', transmission_options)
     st.write("----------------------------------------------------------------------------")
 
     # Preprocessing for variable Is_Transmission_M
