@@ -47,7 +47,7 @@ def __main__():
     """
     Main program. Utilizes streamlit to start a local web instance for model interaction.
     """
-    # model = load_model()
+    model = load_model()
     if model is None:
         st.stop()
         st.write('Model failed to load')
