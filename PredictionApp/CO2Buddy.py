@@ -117,7 +117,7 @@ def __main__():
     # Plugs in new user data to our model and outputs the results.
     if st.button('Predict'):
         prediction = model.predict(new_data)
-        st.write(f'Your car emits {prediction} (g/km) in emissions.')
+        st.write(f'Your car emits ~{prediction} (g/km) in emissions.')
 
         # Ranks emissions rating
         if prediction < 150:
