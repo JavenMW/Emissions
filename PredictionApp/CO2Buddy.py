@@ -11,13 +11,19 @@ def load_model():
     """
     # model = st.file_uploader('Load the')
     # path = (f'{filedialog.askopenfilename(filetypes=[('Pickle files', '*.pkl')])}')
-    path = 'model.pkl'
+    # path = 'model.pkl'
     
-    try:
-        with open(path, 'rb') as f:
-            model = pickle.load(f)
-    except FileNotFoundError:
-        st.error(f"File not found: {path}. Please check the file path.")
+    # try:
+    #     with open(path, 'rb') as f:
+    #         model = pickle.load(f)
+    # except FileNotFoundError:
+    #     st.error(f"File not found: {path}. Please check the file path.")
+    file = st.file_uploader("Choose a file", type="pkl")
+
+    if file is not None:
+        # Read the contents of the uploaded file
+        model = file.read().decode('utf-8')
+        st.write(content)
 
     return model
 
