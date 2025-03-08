@@ -65,11 +65,11 @@ def __main__():
     st.write("----------------------------------------------------------------------------")
     st.title('Fuel Type')
     st.write("----------------------------------------------------------------------------")
-    fueltype_options = ['X \
-                         Z  \
-                         D \
-                         E \
-                         N ']
+    fueltype_options = ['X', \
+                         'Z',  \
+                         'D', \
+                         'E', \
+                         'N']
     fuel_type = st.checkbox('Please enter your fuel type: \
                                 X = Regular gasoline \
                                 Z = Premium gasoline \
@@ -82,11 +82,11 @@ def __main__():
     st.title('Transmission')
     st.write("----------------------------------------------------------------------------")
     gears = st.number_input('Please enter your gear count: ')
-    transmission_options = ['A' \
-                            'AM' \
-                            'AS' \
-                            'AV' \
-                            'M' ]
+    transmission_options = ['A', \
+                            'AM', \
+                            'AS', \
+                            'AV', \
+                            'M', ]
     transmissison = st.checkbox('Please enter your transmission: \
                             A = Automatic \
                             AM = Automated manual \
