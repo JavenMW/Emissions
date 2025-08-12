@@ -1,4 +1,5 @@
 To see functionality, head on over to: https://co2buddy.streamlit.app/
+
 (If the app has gone inactive, expect a cold start period of 1-2 minutes. After this period, predictions should work instantly.)
 
 # Project Outline
