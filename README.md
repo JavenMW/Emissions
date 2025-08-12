@@ -1,4 +1,4 @@
-To see functionality, head on over to: https://co2buddy.streamlit.app/
+To see functionality, head on over to: https://co2buddy.streamlit.app/ and follow the onscreen prompts.
 
 (If the app has gone inactive, expect a cold start period of 1-2 minutes. After this period, predictions should work instantly.)
 
