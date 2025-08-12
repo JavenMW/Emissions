@@ -21,7 +21,7 @@ Since our client wants to know what will happen based on vehicle traits, predict
 
 ### Predictive Analysis
 - Since our dependent variable is numerical, we are going to use different types of regression models.
-    1. XGBoost - specifically xgbregressor for its performance.
+    1. Ridge Regression was used
 
 ## Data Requirements
 Identify any confounding errors and the necessary and relevant features
