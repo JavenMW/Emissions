@@ -1,3 +1,5 @@
+To see funcitonality, head on over to: https://co2buddy.streamlit.app/
+
 
 # Project Outline
 
